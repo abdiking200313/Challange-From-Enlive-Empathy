@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Data Visualization</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Excel Data Visualization</h2>
+        <label>Select Excel File</label>
+        <input type="file" id="fileInput">
+        
+        <label for="xAxisSelect">X-Axis:</label>
+        <select id="xAxisSelect"></select>
+
+        <label for="yAxisSelect">Y-Axis:</label>
+        <select id="yAxisSelect"></select>
+
+        <div id="main"></div>
+    </div>
+
+</body>
+</html>
