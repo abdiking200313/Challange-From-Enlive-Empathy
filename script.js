@@ -7,10 +7,10 @@ $(document).ready(function () {
     console.log("Libraries loaded successfully!");
 
     var myChart = echarts.init(document.getElementById("main"));
-    var sheetData = []; // Store Excel data
+    var sheetData = []; 
 
     function resizeChart() {
-        myChart.resize(); // Resize the chart on window resize
+        myChart.resize(); 
     }
     window.addEventListener("resize", resizeChart);
 
@@ -31,7 +31,7 @@ $(document).ready(function () {
             var data = new Uint8Array(e.target.result);
             var workbook = XLSX.read(data, { type: "array" });
 
-            var sheetName = workbook.SheetNames[0]; // Read the first sheet
+            var sheetName = workbook.SheetNames[0]; 
             sheetData = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName]);
 
             if (sheetData.length === 0) {
@@ -39,7 +39,7 @@ $(document).ready(function () {
                 return;
             }
 
-            // Detect column names dynamically
+
             var columns = Object.keys(sheetData[0]); 
             console.log("Detected Columns:", columns);
 
@@ -48,11 +48,10 @@ $(document).ready(function () {
                 return;
             }
 
-            // Populate dropdowns
+  
             populateDropdown("#xAxisSelect", columns);
             populateDropdown("#yAxisSelect", columns);
 
-            // Set default selections
             $("#xAxisSelect").val(columns[0]);
             $("#yAxisSelect").val(columns[1]);
 
@@ -64,7 +63,7 @@ $(document).ready(function () {
 
     function populateDropdown(selector, columns) {
         var dropdown = $(selector);
-        dropdown.empty(); // Clear previous options
+        dropdown.empty(); 
         columns.forEach(col => {
             dropdown.append(new Option(col, col));
         });
@@ -90,7 +89,7 @@ function updateChart() {
         xAxis: { type: "category", data: xAxisData, axisLabel: { rotate: 45, interval: 0 } },
         yAxis: { type: "value" },
         dataZoom: [
-            { type: "slider", show: true, start: 0, end: 20 }, // Add scroll functionality
+            { type: "slider", show: true, start: 0, end: 20 },
             { type: "inside", start: 0, end: 20 }
         ],
         series: [{ name: yAxisColumn, type: "bar", data: yAxisData }]
